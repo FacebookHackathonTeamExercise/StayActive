@@ -5,6 +5,7 @@
   "content_scripts": [
     {
       "matches": ["http://*/*"],
+      "css": ["components/popup/popup.css"],
       "js": ["components/popup/PopupController.js", "components/popup/PopupModel.js", "components/popup/PopupView.js"]
     }
   ],
