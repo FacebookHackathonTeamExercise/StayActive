@@ -2,7 +2,7 @@ var activityPool = [
     {
          id: 1,
          name: 'Squats',
-         description: 'Get up and do some squats! ',
+         description: 'Get up and do some squats!',
          image: '',
          category: 'exercise',
          funFact: 'Strong legs helps you stay mobile as you get older. Squatting stabilizes muscles and help improve balance.',
@@ -19,7 +19,7 @@ var activityPool = [
     },
     {
         id: 3,
-        name: 'Jumping jacks'
+        name: 'Jumping jacks',
         description: 'You are in a jumping jack olympics. Show everyone your best 3 sets of jumping jacks. Take break as you need it.',
         image: '',
         category: 'exercise',
@@ -50,7 +50,7 @@ var activityPool = [
         description: 'Did you forget to drink water this work streak? Take this time to go get yourself some water or get your water bottle filled',
         image: '',
         category: 'health',
-        funFact: '',
+        funFact: 'When you feel thirsty, you are already very dehydrated. Make sure you keep your body hydrated and your lips uncracked!.',
         badge: 'healthy'
     },
     {
@@ -59,7 +59,7 @@ var activityPool = [
         description: 'Take a bathroom break! Look away from the monitor and enjoy some real life moments',
         image: '',
         category: 'health',
-        funFact: '',
+        funFact: 'Bathroom breaks = Healthier bladder',
         badge: 'healthy',
     },
     {
@@ -68,7 +68,7 @@ var activityPool = [
         description: 'How is your work area look like now? Stand up and organize your things. Throw away those papers and post-its pile you are done with.',
         image: '',
         category: 'chores',
-        funFact: '',
+        funFact: 'Getting rid of clutter lessens your external input to increase your capacity for productive work.',
         badge: 'housemaster'
     },
     {
