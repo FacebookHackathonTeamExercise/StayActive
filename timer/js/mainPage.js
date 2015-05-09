@@ -2,16 +2,16 @@
     The array of employee objects is already in a global variable named 'pawneeEmployees'
 */
 "use strict";
-        if (localStorage.getItem("scores") === null) {
-            var scores = {
-                housemasterScore: 0,
-                athleteScore: 0,
-                healthScore: 0
-            }
+if (localStorage.getItem("scores") === null) {
+    var scores = {
+        chores: 0,
+        exercise: 0,
+        health: 0
+    }
 
-        } else {
-            var scores = JSON.parse(window.localStorage.get("saved"));
-        }
+} else {
+    var scores = JSON.parse(window.localStorage.get("scores"));
+}
 angular.module('ActivityDisplay', [])
     .controller('ActivityController', function ($scope) {
         $scope.activities = activityPool;
@@ -40,14 +40,21 @@ angular.module('ActivityDisplay', [])
             close();
         }
 
-         $scope.updateScore = function () {
-            $scope.housemasterScore += 1;
-             scores.housemasterScore += 1;
-            $scope.athleteScore += 1;
-             scores.athleteScore += 1;
-            $scope.healthScore += 1;
-             scores.healthScore += 1;
-            //window.localStorage.set("saved", JSON.stringify(scores));
+        $scope.updateScore = function () {
+            if (activityPool[0].category == 'chores') {
+                $scope.chores += 1;
+                scores.chores += 1;
+            } else if (activityPool[0].category == 'exercise') {
+                $scope.exercise += 1;
+                scores.exercise += 1;
+            } else {
+                $scope.health += 1;
+                scores.health += 1;
+            }
+
+
+
+            window.localStorage.set("scores", JSON.stringify(scores));
             close();
         }
 
