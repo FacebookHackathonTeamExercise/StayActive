@@ -1,8 +1,4 @@
-tr {
-    white-space: nowrap;
-}
-.results {
-    text-align: right;
-    min-width: 6em;
-    color: black;
+#countdown-seconds {
+    border-style: solid;
+    border-width: 5px;
 }
