@@ -12,7 +12,7 @@
   ],
   "browser_action": {
     "default_popup": "dropdown.html",
-    "default_icon": "img/clock.png",
+    "default_icon": "img/logo.png",
     "default_title": "Time to get out of the chair"
 
   },

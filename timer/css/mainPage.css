@@ -22,3 +22,6 @@ h1, h2, h3, h4 {
     font-family: Copperplate, 'Copperplate Gothic Light', sans-serif;
 }
 
+button {
+    width: 160px;
+}
