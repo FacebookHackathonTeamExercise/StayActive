@@ -12,10 +12,13 @@ $(document).ready(function() {
     }); // modal start game
 
 
+
+
     $('#countdown-seconds').setTimer(function(i, count) {
         $(this).text(count);
     }, 1000, 11, true, function() {
-        $(this).text("ok");
+        //$(this).text("ok");
+        window.location.replace("../mainPage.html")
     });
     
 }); //jQuery Ready Function
