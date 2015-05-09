@@ -22,9 +22,9 @@ angular.module('ActivityDisplay', [])
         $scope.activityCategory = activityPool[0].category;
         $scope.activityFunFact = activityPool[0].funFact;
         $scope.activityBadge = activityPool[0].badge;
-        $scope.housemasterScore = scores.housemasterScore;
-        $scope.athleteScore = scores.athleteScore;
-        $scope.healthScore = scores.healthScore;
+        $scope.chores = scores.chores;
+        $scope.exercise = scores.exercise;
+        $scope.health = scores.health;
         $scope.shuffle = function () {
             activityPool = _.shuffle(activityPool);
             $scope.activityId = activityPool[0].id;
