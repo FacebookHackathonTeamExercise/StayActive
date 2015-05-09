@@ -60,3 +60,5 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#testConnect').addEventListener(
       'click', testConnect);
 });
+
+
