@@ -25,7 +25,7 @@ $(document).ready(function() {
     function timedText() {
         $('#countdown-seconds').setTimer(function (i, count) {
             $(this).text(count);
-        }, 1000, 11, true, function () {
+        }, 1000, 31, true, function () {
             //$(this).text("ok");
             window.location.replace("../mainPage.html")
         });
