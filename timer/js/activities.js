@@ -66,7 +66,7 @@ var activityPool = [
         id: 8,
         name: 'Declutter your workspace',
         description: 'How is your work area look like now? Stand up and organize your things. Throw away those papers and post-its pile you are done with.',
-        image: 'img/declutter,png',
+        image: 'img/declutter,gif',
         category: 'chores',
         funFact: 'Getting rid of clutter lessens your external input to increase your capacity for productive work.',
         badge: 'housemaster'
