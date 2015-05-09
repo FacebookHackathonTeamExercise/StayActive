@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap-theme.css">
     <link href="css/mainPage.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body ng-app="ActivityDisplay" ng-controller="ActivityController">
 <div class="container">
     <h1 class="text-center">Stay Active</h1>
     <br />
@@ -50,10 +50,16 @@
     </div>
 
 </div>
+
 <script src="js/jquery-2.1.4.js"></script>
+<script src="js/angular.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/lodash.js"></script>
 <script src="js/popup.js"></script>
+<!-- link to employee data
+this adds a global variable named 'pawneeEmployees', which is an array of objects (see js/employees.js file)
+-->
+<script src="js/activities.js"></script>
 <script src="js/mainPage.js"></script>
 <script src="js/page.js"></script>
 </body>
