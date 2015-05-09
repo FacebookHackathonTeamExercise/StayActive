@@ -1,118 +1,43 @@
-$(document).ready(function(){
-    //catch click event of start game button
-    detectClick = true
-    $('#start-game').click(function(){
-        $("#statistics").removeClass("hidden");
-        $("#instructions").hide();
-        startGame();
+/*
+    The array of employee objects is already in a global variable named 'pawneeEmployees'
+*/
+"use strict";
+    var CurrentActivityId;
+    var CurrentActivityName;
+    var CurrentActivityDescription;
+    var CurrentActivityImage;
+    var CurrentActivityCategory;
+    var CurrentActivityFunFact;
+    var CurrentActivityBadge;
+
+angular.module('ActivityDisplay', [])
+    .controller('ActivityController', function ($scope) {
+        $scope.activities = activityPool;
+
+        selectNewActivity();
+
+        alert(CurrentActivityId + '\n' + CurrentActivityName + '\n' + CurrentActivityDescription + '\n' + CurrentActivityImage + '\n' + CurrentActivityCategory + '\n' + CurrentActivityFunFact + '\n' + CurrentActivityBadge);
+        activityPool = _.shuffle(activityPool);
+
+        $scope.sortBy = function (colName) {
+            $scope.sortCol = colName;
+        }
+        $scope.isSortedBy = function (colName) {
+            return $scope.sortCol == colName;
+        }
     });
 
-}); //document ready button
-function startGame() {
-    console.log('start game button clicked!');
-    tiles = _.shuffle(tiles);
-    var selectedTiles = tiles.slice(0,8);
-    totalPairs = selectedTiles.length;
-    resetGame();
-    updateStatistics();
-    var tilePairs = [];
-    _.forEach(selectedTiles, function(tile) {
-        tilePairs.push(tile);
-        tilePairs.push(_.clone(tile));
-    });
-    tilePairs = _.shuffle(tilePairs);
-    console.log(tilePairs);
+$('#shuffleActivityButton').click(function() {
+    selectNewActivity();
+}); // modal start game
 
-    var gameBoard = $('#game-board');
-    var row = $(document.createElement('div'));
-    var img;
-    _.forEach(tilePairs, function(tile, elemIndex) {
-        if(elemIndex > 0 && 0 == elemIndex % 4) {
-            gameBoard.append(row);
-            row = $(document.createElement('div'));
-        }
-        img = $(document.createElement('img'));
-        img.attr({
-            src: 'img/tile-back.png',
-            alt: 'tile ' + tile.tileNum
-        });
-        img.data('tile', tile);
-        row.append(img);
-    });
-    gameBoard.append(row);
-
-    //get starting milliseconds
-    var startTime = Date.now();
-    gameTimer = window.setInterval(function() {
-        var elapsedSeconds = (Date.now() - startTime) / 1000;
-        elapsedSeconds = Math.floor(elapsedSeconds);
-        $('#elapsed-seconds').text(elapsedSeconds + ' seconds');
-    }, 1000);
-
-
-    $('#game-board img').click(function() {
-        if(!detectClick) {
-            return;
-        }
-        //console.log(this.alt);
-        var clickedIMG = $(this);
-        var tile = clickedIMG.data('tile');
-
-        console.log(tile);
-        if(!tile.flipped) {
-            flipTile(tile, clickedIMG);
-            if(previousImg == null) {
-                previousImg = clickedIMG;
-            } else {
-                var previousTile = previousImg.data('tile');
-                if(previousTile.src == tile.src) {
-                    remaining -= 1;
-                    $('#matches-missed').text('Matches missed: ' + missed);
-                    previousImg = null;
-                    if(remaining == 0) {
-                            window.alert("You win! :)");
-                    }
-                    updateStatistics();
-                } else {
-                    detectClick = false;
-                    window.setTimeout(function () {
-                        flipTile(tile, clickedIMG);
-                        flipTile(previousTile, previousImg);
-                        missed += 1;
-                        $('#matches-missed').text('Matches missed: ' + missed);
-                        previousImg = null;
-                        detectClick = true;
-                        updateStatistics();
-                    }, 1000);
-                }
-            }
-        }
-    })
-}; //start game button click
-
-function updateStatistics() {
-    $('#wrong-matches').text(" " + missed);
-    $('#matches-left').text(" " + remaining);
-    $('#matches-made').text(" " + (totalPairs - remaining));
-}
-
-function resetGame() {
-    $('#game-board').empty();
-    remaining = totalPairs;
-    missed = 0;
-    detectClick = true;
-    previousImg = null;
-    window.clearInterval(gameTimer);
-}
-function flipTile(tile, img) {
-    //if
-    img.fadeOut(100, function() {
-        if (tile.flipped) {
-            img.attr('src', 'img/tile-back.png');
-        } else {
-            img.attr('src', tile.src);
-        }
-        tile.flipped = !tile.flipped;
-        img.fadeIn(100);
-    });
+function selectNewActivity() {
+    activityPool = _.shuffle(activityPool);
+    CurrentActivityId = activityPool[0].id;
+    CurrentActivityName = activityPool[0].name;
+    CurrentActivityDescription = activityPool[0].description;
+    CurrentActivityImage = activityPool[0].image;
+    CurrentActivityCategory = activityPool[0].category;
+    CurrentActivityFunFact = activityPool[0].funFact;
+    CurrentActivityBadge = activityPool[0].badge;
 }
