@@ -37,7 +37,7 @@ var activityPool = [
     },
     {
         id: 4,
-        name: 'Stretch'
+        name: 'Stretch',
         description: 'Stand up and stretch. Stretch your arms, legs, neck, back and wrists.',
         image: '',
         category: 'exercise',
@@ -87,7 +87,7 @@ var activityPool = [
         image: '',
         category: 'exercise',
         funFact: '',
-        badge: 'active',
+        badge: 'active'
     },
     {
         id: 10,
