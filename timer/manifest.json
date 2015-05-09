@@ -1,17 +1,20 @@
 {
   "name": "Stay Active",
-  "version": "1",
+  "version": "0.1",
   "description": "Timer countdown to an activity that will help you out of the chair.",
   "content_scripts": [
     {
-      "matches": ["http://*/*"],
-      "js": ["js/app.js"]
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["js/jquery-2.1.4.js", "js/app.js"]
     }
   ],
   "browser_action": {
-    "default_title": "Time to get out of the chair",
+    "default_popup": "dropdown.html",
     "default_icon": "img/clock.png",
-    "default_popup": "dropdown.html"
+    "default_title": "Time to get out of the chair"
+
   },
   "manifest_version": 2
 }
