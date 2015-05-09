@@ -3,7 +3,7 @@
 $(document).ready(function() {
     //var BG = chrome.extension.getBackgroundPage();
 
-    var startTime = 60;
+    var count;
 
     $('#activityButton').click(function() {
         //initial start of the game
@@ -12,13 +12,12 @@ $(document).ready(function() {
     }); // modal start game
 
 
-
-
-    $('#countdown-seconds').setTimer(function(i, count) {
+    $('#countdown-seconds').setTimer(function (i, count) {
         $(this).text(count);
-    }, 1000, 11, true, function() {
+    }, 1000, 11, true, function () {
         //$(this).text("ok");
         window.location.replace("../mainPage.html")
     });
+
     
-}); //jQuery Ready Function
+    }); //jQuery Ready Function
