@@ -5,7 +5,7 @@
 if (!chrome.benchmarking) {
   alert("Warning:  Looks like you forgot to run chrome with " +
         " --enable-benchmarking set.");
-  return;
+    return;
 }
 
 function setChildTextNode(elementId, text) {
@@ -60,3 +60,5 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#testConnect').addEventListener(
       'click', testConnect);
 });
+
+
