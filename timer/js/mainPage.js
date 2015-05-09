@@ -2,15 +2,16 @@
     The array of employee objects is already in a global variable named 'pawneeEmployees'
 */
 "use strict";
-var CurrentActivityId;
-var CurrentActivityName;
-var CurrentActivityDescription;
-var CurrentActivityImage;
-var CurrentActivityCategory;
-var CurrentActivityFunFact;
-var CurrentActivityBadge;
+        if (localStorage.getItem("scores") === null) {
+            var scores = {
+                housemasterScore: 0,
+                athleteScore: 0,
+                healthScore: 0
+            }
 
-
+        } else {
+            var scores = JSON.parse(window.localStorage.get("saved"));
+        }
 angular.module('ActivityDisplay', [])
     .controller('ActivityController', function ($scope) {
         $scope.activities = activityPool;
@@ -21,10 +22,11 @@ angular.module('ActivityDisplay', [])
         $scope.activityCategory = activityPool[0].category;
         $scope.activityFunFact = activityPool[0].funFact;
         $scope.activityBadge = activityPool[0].badge;
-
+        $scope.housemasterScore = scores.housemasterScore;
+        $scope.athleteScore = scores.athleteScore;
+        $scope.healthScore = scores.healthScore;
         $scope.shuffle = function () {
             activityPool = _.shuffle(activityPool);
-            $scope.visible = !$scope.visible;
             $scope.activityId = activityPool[0].id;
             $scope.activityName = activityPool[0].name;
             $scope.activityDescription = activityPool[0].description;
@@ -34,7 +36,19 @@ angular.module('ActivityDisplay', [])
             $scope.activityBadge = activityPool[0].badge;
         };
 
-        $scope.close = function() {
-        close();
+        $scope.close = function () {
+            close();
         }
+
+         $scope.updateScore = function () {
+            $scope.housemasterScore += 1;
+             scores.housemasterScore += 1;
+            $scope.athleteScore += 1;
+             scores.athleteScore += 1;
+            $scope.healthScore += 1;
+             scores.healthScore += 1;
+            //window.localStorage.set("saved", JSON.stringify(scores));
+            close();
+        }
+
     });

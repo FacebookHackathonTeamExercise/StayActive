@@ -20,8 +20,8 @@
         <br />
         <div class="row">
             <div class="col-md-4" style="background-color:">
-               <p align="center">
-                   <img id="activityImage" ng-src="{{activityImage}}">
+                <p align="center">
+                    <img id="activityImage" ng-src="{{activityImage}}">
                     <!--display the image from array -->
                 </p>
             </div>
@@ -36,11 +36,11 @@
             <div class="col-md-2" align="center">
                 <p id="badges">
                     <img src="img/house_badge.png" height="50">
-                    <p>Housemaster</p>
+                    <p>Housemaster: {{housemasterScore}}</p>
                     <img src="img/athlete_badge.png" height="50">
-                    <p>Athlete</p>
+                    <p>Athlete: {{athleteScore}}</p>
                     <img src="img/health_badge.png" height="50">
-                    <p>Healthy</p>
+                    <p>Healthy: {{healthScore}}</p>
                 </p>
             </div>
 
@@ -48,7 +48,7 @@
         <br />
         <br />
         <div class="text-center">
-            <button type="button" class="btn btn-success" data-dismiss="modal" id="finishActivityButton">Done</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal" id="finishActivityButton" ng-click="updateScore()">Done</button>
             <button type="button" class="btn btn-primary" data-dismiss="modal" id="shuffleActivityButton" ng-click="shuffle()">Shuffle Activity</button>
             <button type="button" class="btn btn-warning" data-dismiss="modal" id="closeWindowButton" ng-click="close()">I'm busy</button>
         </div>
@@ -57,7 +57,7 @@
 
     <script src="js/jquery-2.1.4.js"></script>
     <script src="js/angular.js"></script>
-    <script src="js/ngStorage.min.js"></script>
+    <script src="js/ngStorage.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/lodash.js"></script>
     <script src="js/popup.js"></script>
