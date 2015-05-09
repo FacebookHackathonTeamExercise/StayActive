@@ -15,7 +15,7 @@
 <body ng-app="ActivityDisplay" ng-controller="ActivityController">
 
     <div class="container">
-        <h1 class="text-center"><img src="img/biglogo.png" height="40" width="40">&nbsp;&nbsp;Stay Active</h1>
+        <h1 class="text-center"><img src="img/biglogo.png" height="65" width="auto">&nbsp;&nbsp;Stay Active</h1>
         <br />
         <br />
         <div class="row">
@@ -33,13 +33,15 @@
                 <br />
                 <p>{{activityFunFact}}</p>
             </div>
-            <div class="col-md-2" style="background-color:">
-                <h3>Housemaster</h3>
-                <img src="img/house_badge.png">
-                <h3>Athlete</h3>
-                <img src="img/athlete_badge.png">
-                <h3>Healthy</h3>
-                <img src="img/health_badge.png">
+            <div class="col-md-2" align="center">
+                <p id="badges">
+                    <img src="img/house_badge.png" height="50">
+                    <p>Housemaster</p>
+                    <img src="img/athlete_badge.png" height="50">
+                    <p>Athlete</p>
+                    <img src="img/health_badge.png" height="50">
+                    <p>Healthy</p>
+                </p>
             </div>
 
         </div>
