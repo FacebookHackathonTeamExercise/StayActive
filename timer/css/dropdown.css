@@ -16,9 +16,12 @@ table {
 
 h2, p {
     color:;
-
 }
 
 h2 {
     font-family: Copperplate, 'Copperplate Gothic Light', sans-serif;
+}
+
+h4 {
+    size: 12pt;
 }
