@@ -6,7 +6,7 @@ $(document).ready(function() {
     $('#activityButton').click(function() {
         //initial start of the game
         //    $('#activityView').modal();
-        chrome.tabs.create({"url": "http://google.com"});
+        chrome.tabs.create({"url": "../mainPage.html"});
     }); // modal start game
 
 }); //jQuery Ready Function
