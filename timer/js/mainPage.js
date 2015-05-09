@@ -13,7 +13,6 @@ var CurrentActivityBadge;
 
 angular.module('ActivityDisplay', [])
     .controller('ActivityController', function ($scope) {
-        selectNewActivity();
         $scope.activities = activityPool;
         $scope.activityId = activityPool[0].id;
         $scope.activityName = activityPool[0].name;
@@ -34,17 +33,8 @@ angular.module('ActivityDisplay', [])
             $scope.activityFunFact = activityPool[0].funFact;
             $scope.activityBadge = activityPool[0].badge;
         };
+
+        $scope.close = function() {
+        close();
+        }
     });
-
-function selectNewActivity() {
-
-    activityPool = _.shuffle(activityPool);
-
-    CurrentActivityId = activityPool[0].id;
-    CurrentActivityName = activityPool[0].name;
-    CurrentActivityDescription = activityPool[0].description;
-    CurrentActivityImage = activityPool[0].image;
-    CurrentActivityCategory = activityPool[0].category;
-    CurrentActivityFunFact = activityPool[0].funFact;
-    CurrentActivityBadge = activityPool[0].badge;
-}
