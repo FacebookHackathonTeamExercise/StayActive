@@ -10,32 +10,36 @@ var CurrentActivityCategory;
 var CurrentActivityFunFact;
 var CurrentActivityBadge;
 
+
 angular.module('ActivityDisplay', [])
     .controller('ActivityController', function ($scope) {
         selectNewActivity();
+        $scope.activities = activityPool;
+        $scope.activityId = activityPool[0].id;
+        $scope.activityName = activityPool[0].name;
+        $scope.activityDescription = activityPool[0].description;
+        $scope.activityImage = activityPool[0].image;
+        $scope.activityCategory = activityPool[0].category;
+        $scope.activityFunFact = activityPool[0].funFact;
+        $scope.activityBadge = activityPool[0].badge;
 
-                $scope.activities = activityPool;
-                $scope.activityId = CurrentActivityId;
-                $scope.activityName = CurrentActivityName;
-                $scope.activityDescription = CurrentActivityDescription;
-                $scope.activityImage = CurrentActivityImage;
-                $scope.activityCategory = CurrentActivityCategory;
-                $scope.activityFunFact = CurrentActivityFunFact;
-                $scope.activityBadge = CurrentActivityBadge;
-        $scope.sortBy = function (colName) {
-            $scope.sortCol = colName;
-        }
-        $scope.isSortedBy = function (colName) {
-            return $scope.sortCol == colName;
-        }
+        $scope.shuffle = function () {
+            activityPool = _.shuffle(activityPool);
+            $scope.visible = !$scope.visible;
+            $scope.activityId = activityPool[0].id;
+            $scope.activityName = activityPool[0].name;
+            $scope.activityDescription = activityPool[0].description;
+            $scope.activityImage = activityPool[0].image;
+            $scope.activityCategory = activityPool[0].category;
+            $scope.activityFunFact = activityPool[0].funFact;
+            $scope.activityBadge = activityPool[0].badge;
+        };
     });
 
-$('#shuffleActivityButton').click(function () {
-    selectNewActivity();
-}); // modal start game
-
 function selectNewActivity() {
+
     activityPool = _.shuffle(activityPool);
+
     CurrentActivityId = activityPool[0].id;
     CurrentActivityName = activityPool[0].name;
     CurrentActivityDescription = activityPool[0].description;
@@ -43,5 +47,4 @@ function selectNewActivity() {
     CurrentActivityCategory = activityPool[0].category;
     CurrentActivityFunFact = activityPool[0].funFact;
     CurrentActivityBadge = activityPool[0].badge;
-    alert(CurrentActivityId + '\n' + CurrentActivityName + '\n' + CurrentActivityDescription + '\n' + CurrentActivityImage + '\n' + CurrentActivityCategory + '\n' + CurrentActivityFunFact + '\n' + CurrentActivityBadge);
 }
