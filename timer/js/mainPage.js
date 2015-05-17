@@ -8,7 +8,7 @@
         exercise: 0,
         health: 0
     }
-//
+// chrome.storage.sync.set("scores", JSON.stringify(scores));
 //} else {
 //    var scores = JSON.parse(chrome.storage.sync.get("scores"));
 //}
