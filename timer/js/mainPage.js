@@ -2,16 +2,16 @@
     The array of employee objects is already in a global variable named 'pawneeEmployees'
 */
 "use strict";
-if (localStorage.getItem("scores") === null) {
+//if (chrome.storage.sync.get("scores") === null) {
     var scores = {
         chores: 0,
         exercise: 0,
         health: 0
     }
-
-} else {
-    var scores = JSON.parse(window.localStorage.get("scores"));
-}
+//
+//} else {
+//    var scores = JSON.parse(chrome.storage.sync.get("scores"));
+//}
 var app = angular.module('ActivityDisplay', [])
     .controller('ActivityController', function ($scope) {
         $scope.activities = activityPool;
@@ -43,32 +43,30 @@ var app = angular.module('ActivityDisplay', [])
         $scope.updateScore = function () {
             if (activityPool[0].category == 'chores') {
                 $scope.chores += 1;
-                scores.chores += 1;
+                scores.chores += $scope.chores;
             } else if (activityPool[0].category == 'exercise') {
                 $scope.exercise += 1;
-                scores.exercise += 1;
+                scores.exercise += $scope.exercise;
             } else {
                 $scope.health += 1;
-                scores.health += 1;
+                scores.health = $scope.health;
             }
 
 
-
-            window.localStorage.set("scores", JSON.stringify(scores));
+            
+            chrome.storage.sync.set("scores", JSON.stringify(scores));
             close();
         }
 
     });
 
-    app.config( [
+app.config([
             '$compileProvider',
-            function( $compileProvider ) {
-                var currentImgSrcSanitizationWhitelist = $compileProvider.imgSrcSanitizationWhitelist();
-                var newImgSrcSanitizationWhiteList = currentImgSrcSanitizationWhitelist.toString().slice(0,-1)
-                + '|chrome-extension:'
-                +currentImgSrcSanitizationWhitelist.toString().slice(-1);
+            function ($compileProvider) {
+        var currentImgSrcSanitizationWhitelist = $compileProvider.imgSrcSanitizationWhitelist();
+        var newImgSrcSanitizationWhiteList = currentImgSrcSanitizationWhitelist.toString().slice(0, -1) + '|chrome-extension:' + currentImgSrcSanitizationWhitelist.toString().slice(-1);
 
-                console.log("Changing imgSrcSanitizationWhiteList from "+currentImgSrcSanitizationWhitelist+" to "+newImgSrcSanitizationWhiteList);
-                $compileProvider.imgSrcSanitizationWhitelist(newImgSrcSanitizationWhiteList);
+        console.log("Changing imgSrcSanitizationWhiteList from " + currentImgSrcSanitizationWhitelist + " to " + newImgSrcSanitizationWhiteList);
+        $compileProvider.imgSrcSanitizationWhitelist(newImgSrcSanitizationWhiteList);
             }
         ]);

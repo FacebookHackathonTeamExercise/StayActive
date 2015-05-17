@@ -94,7 +94,7 @@ var activityPool = [
         name: 'Take out the trash',
         description: 'Take out the trash, or if you don not have the time, put away the trash sitting on your desk and throw it away!.',
         image: 'img/take_out_trash.gif',
-        category: 'health',
+        category: 'chores',
         funFact: 'Decluttering your space declutters your mind too.',
         badge: 'housemaster'
     }

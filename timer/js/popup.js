@@ -2,12 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-if (!chrome.benchmarking) {
-  alert("Warning:  Looks like you forgot to run chrome with " +
-        " --enable-benchmarking set.");
-    return;
-}
-
 function setChildTextNode(elementId, text) {
   document.getElementById(elementId).innerText = text;
 }

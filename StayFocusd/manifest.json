@@ -14,5 +14,8 @@
     "default_icon": "clock.png",
     "default_popup": "components/popup/popup.html"
   },
+  "permissions": [
+    "storage"
+  ],
   "manifest_version": 2
 }
