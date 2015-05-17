@@ -12,7 +12,7 @@ if (localStorage.getItem("scores") === null) {
 } else {
     var scores = JSON.parse(window.localStorage.get("scores"));
 }
-angular.module('ActivityDisplay', [])
+var app = angular.module('ActivityDisplay', [])
     .controller('ActivityController', function ($scope) {
         $scope.activities = activityPool;
         $scope.activityId = activityPool[0].id;
@@ -59,3 +59,16 @@ angular.module('ActivityDisplay', [])
         }
 
     });
+
+    app.config( [
+            '$compileProvider',
+            function( $compileProvider ) {
+                var currentImgSrcSanitizationWhitelist = $compileProvider.imgSrcSanitizationWhitelist();
+                var newImgSrcSanitizationWhiteList = currentImgSrcSanitizationWhitelist.toString().slice(0,-1)
+                + '|chrome-extension:'
+                +currentImgSrcSanitizationWhitelist.toString().slice(-1);
+
+                console.log("Changing imgSrcSanitizationWhiteList from "+currentImgSrcSanitizationWhitelist+" to "+newImgSrcSanitizationWhiteList);
+                $compileProvider.imgSrcSanitizationWhitelist(newImgSrcSanitizationWhiteList);
+            }
+        ]);
